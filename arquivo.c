@@ -1,4 +1,7 @@
 #include <stdio.h>
+#ifdef DEBUG
+#include <time.h>
+#endif
 
 int estado = 0;
 
@@ -129,6 +132,10 @@ int aceitacao(char str[], int n) {
 }
 
 int main () {
+#ifdef DEBUG
+    time_t t;
+    time(&t);
+#endif
     char string[51];
     int n = 0;
 
@@ -147,5 +154,11 @@ int main () {
         printf("nao\n");
     }
 
+#ifdef DEBUG
+    time_t e;
+    time(&e);
+    return e - t;
+#else
     return 0;
+#endif
 }
